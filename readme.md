@@ -15,13 +15,13 @@
 ## 實作
 
 ### 下載 repository
-```git clone https://github.com/GoogleCloudPlatform/python-docs-samples```
+```git clone https://github.com/Whaleman0423/app_engine_quick_start.git```
 
 ### building-an-app-1
 
 #### 本地測試指令
 ```
-cd building-an-app
+cd app_engine_quick_start
 python -m venv venv
 
 # windows
@@ -41,7 +41,7 @@ http://localhost:8080
 在空目錄 git clone
 
 ```
-cd building-an-app/build-an-app-1
+cd app_engine_quick_start/building-an-app-1
 ```
 
 部署
@@ -49,3 +49,5 @@ cd building-an-app/build-an-app-1
 ```
 gcloud app deploy
 ```
+
+### building-an-app-2
