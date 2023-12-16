@@ -1,0 +1,52 @@
+<!doctype html>
+<!--
+ Copyright 2021 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<html>
+<!-- HTML 文檔的開始。這標示著一個 HTML 文檔的開頭。-->
+
+<head>
+    <!-- head 標籤包含了所有的元數據和頁面標題。-->
+
+    <title>Datastore and Firebase Auth 應用範例</title>
+    <!-- title 標籤設置了網頁的標題，這會顯示在瀏覽器的標籤上。-->
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <!-- script 標籤用於加載 JavaScript 文件。這裡使用模板語言來生成腳本文件的 URL。-->
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- link 標籤用於連接外部 CSS 樣式表。同樣使用模板語言生成樣式表文件的 URL。-->
+</head>
+
+<body>
+    <!-- body 標籤包含了網頁的主要內容。-->
+
+    <h1>Datastore and Firebase Auth 應用範例</h1>
+    <!-- h1 標籤用於顯示一個主標題，這裡是頁面的主要標題。-->
+
+    <h2>前 10 位訪客訪問時間</h2>
+    <!-- h2 標籤提供了一個次級標題。-->
+
+    {% for time in times %}
+    <p>{{ time }}</p>
+    <!-- 這裡使用模板引擎的循環語法。對 times 變量中的每個元素進行迭代，
+         並將每個時間值放入一個段落標籤中。 -->
+    {% endfor %}
+
+</body>
+
+</html>
+<!-- HTML 文檔的結束。-->
