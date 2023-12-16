@@ -12,7 +12,8 @@ datastore_client = datastore.Client()
 @app.route("/")
 def root():
     # 獲取當前的台灣時間（台北時間，UTC+8）
-    taiwan_tz = pytz.timezone('Asia/Taipei')
+    # taiwan_tz = pytz.timezone('Asia/Taipei')
+    taiwan_tz = datetime.timezone(datetime.timedelta(hours=8))
     taiwan_time = datetime.datetime.now(tz=taiwan_tz)
 
     # 將台灣時間存儲到 Datastore
