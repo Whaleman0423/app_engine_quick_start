@@ -11,13 +11,8 @@ datastore_client = datastore.Client()
 
 @app.route("/")
 def root():
-    # 獲取當前的台灣時間（台北時間，UTC+8）
-    # taiwan_tz = pytz.timezone('Asia/Taipei')
-    taiwan_tz = datetime.timezone(datetime.timedelta(hours=8))
-    taiwan_time = datetime.datetime.now(tz=taiwan_tz)
-
-    # 將台灣時間存儲到 Datastore
-    store_time(taiwan_time)
+    # 儲存當前 UTC 時間至 DataStore
+    store_time(datetime.datetime.now(tz=datetime.timezone.utc))
 
     # 從 Datastore 獲取最近的訪問時間。
     times = fetch_times(10)
@@ -34,14 +29,25 @@ def store_time(dt):
     datastore_client.put(entity)
 
 def fetch_times(limit):
-    # 從 Datastore 查詢訪問時間。
     query = datastore_client.query(kind="visit")
     query.order = ["-timestamp"]
 
-    # 獲取最近的限定數量的訪問時間。
-    times = query.fetch(limit=limit)
+    times_iter = query.fetch(limit=limit)
 
-    return times
+    # 將迭代器轉換為列表
+    times = list(times_iter)
+
+    taiwan_tz = pytz.timezone('Asia/Taipei')
+
+    # 轉換時間為 台灣時間 並格式化為字符串
+    formatted_times = []
+    for time in times:
+        tz_aware_time = time['timestamp'].replace(tzinfo=pytz.utc).astimezone(taiwan_tz)
+        formatted_times.append(tz_aware_time.strftime('%Y-%m-%d %H:%M:%S'))
+        print(tz_aware_time.strftime('%Y-%m-%d %H:%M:%S'))
+
+    return formatted_times
+
 
 if __name__ == "__main__":
     # 這段代碼僅在本地運行 Flask 應用時使用。
