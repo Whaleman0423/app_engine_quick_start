@@ -5,7 +5,7 @@
 ## 功能版本
 
 1. 最初實作，在本地進行功能測試，並將第一版部署至 App Engine
-2.
+2. 基於第一版本的實作, 增加功能, 讓用戶訪問時, 將訪問時間記錄到 GCP DataStore, 並在網頁讀取真實的前10筆時間資料
 
 ## 先決條件
 
@@ -36,7 +36,7 @@ http://localhost:8080
 ```
 
 #### 部署至 app engine
-至 Cloud Shell
+至 Cloud Shell Editor
 
 在空目錄 git clone
 
@@ -51,3 +51,27 @@ gcloud app deploy
 ```
 
 ### building-an-app-2
+第二步實作, 由於沒有使用 gcp 模擬器, 是直接將資料存到 GCP 的 DataStore, 因此串接上需要身分驗證, 考量不想額外下載 json key, 直接在 GCP Cloud Shell Editor 進行測試。
+
+開啟 Cloud Shell Editor
+
+進入第二個資料夾
+
+```
+cd ..
+cd building-an-app-2
+
+pip install -r requirements.txt
+python main.py
+
+<!-- 訪問 localhost:8080 -->
+http://localhost:8080
+```
+
+#### 部署至 app engine
+部署
+
+```
+gcloud app deploy
+```
+
