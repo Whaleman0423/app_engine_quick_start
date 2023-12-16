@@ -39,7 +39,9 @@ http://localhost:8080
 至 Cloud Shell
 
 在空目錄 git clone
+
 ```cd building-an-app/build-an-app-1```
 
 部署
+
 ```gcloud app deploy```
