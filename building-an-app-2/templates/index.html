@@ -1,0 +1,46 @@
+<!doctype html>
+<!--
+ Copyright 2021 Google LLC
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 指定文檔的標題，將在瀏覽器標籤中顯示 -->
+    <title>Datastore and Firebase Auth 應用範例</title>
+
+    <!-- 引入 JavaScript 文件。使用 Flask 的 url_for 函數來生成靜態文件的 URL -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <!-- 引入 CSS 樣式表。同樣使用 url_for 函數來引用靜態樣式文件 -->
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <!-- 標題顯示應用的名稱 -->
+    <h1>Datastore and Firebase Auth 應用範例</h1>
+
+    <!-- 次標題顯示功能描述 -->
+    <h2>最新 10 位訪客訪問時間</h2>
+
+    <!-- 使用 Jinja2 模板引擎的 for 循環來遍歷時間列表 -->
+    {% for time in times %}
+    <!-- 每個訪問時間作為一個段落顯示 -->
+    <p>{{ time['timestamp'] }}</p>
+    {% endfor %}
+</body>
+
+</html>
